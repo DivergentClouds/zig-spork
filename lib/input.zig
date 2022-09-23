@@ -28,7 +28,7 @@ pub const Input = struct {
     /// Checks whether the Input equals an input description. Description must
     /// be comptime known.
     pub fn eqlDescription(self: Input, comptime descr: []const u8) bool {
-        const description_input = comptime Input.fromDescription(descr) catch @compileError("zig-spoon: Bad input descriptor.");
+        const description_input = comptime Input.fromDescription(descr) catch @compileError("zig-spork: Bad input descriptor.");
         return meta.eql(self, description_input);
     }
 
@@ -275,7 +275,7 @@ const InputParser = struct {
         // <rant>
         //   32 is always added to the coordinates to ensure that they are
         //   printable chars. This hack dates back to X10. Yes. Also they are
-        //   indexed starting at 1. In zig-spoon we (try to) enforce sane 0
+        //   indexed starting at 1. In zig-spork we (try to) enforce sane 0
         //   based indexing so that also needs to go. And yet again we uncover
         //   abominations that allow us to laugh in the face of anyone who
         //   claims backwards compatability is a good idea. This is what people

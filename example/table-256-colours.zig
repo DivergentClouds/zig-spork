@@ -1,12 +1,12 @@
 const std = @import("std");
 const io = std.io;
 
-const spoon = @import("spoon");
+const spork = @import("spork");
 
-const title_colour = spoon.Attribute.Colour.fromDescription("7") catch
+const title_colour = spork.Attribute.Colour.fromDescription("7") catch
     @compileError("bad colour description");
-const title = spoon.Attribute{ .fg = title_colour, .bold = true };
-const reset = spoon.Attribute{};
+const title = spork.Attribute{ .fg = title_colour, .bold = true };
+const reset = spork.Attribute{};
 
 pub fn main() !void {
     const writer = io.getStdOut().writer();
@@ -16,7 +16,7 @@ pub fn main() !void {
 
     try writeTitle(writer, "Standard colours (0 to 15)");
     while (colour < 16) : (colour += 1) {
-        const attr = spoon.Attribute{ .bg = .{ .@"256" = colour } };
+        const attr = spork.Attribute{ .bg = .{ .@"256" = colour } };
 
         try attr.dump(writer);
         try writer.writeAll("    ");
@@ -28,7 +28,7 @@ pub fn main() !void {
     try writeTitle(writer, "\n6x6x6 cubic palette (16 to 231)");
     column = 0;
     while (colour < 232) : (colour += 1) {
-        const attr = spoon.Attribute{ .bg = .{ .@"256" = colour } };
+        const attr = spork.Attribute{ .bg = .{ .@"256" = colour } };
 
         if (column == 16) {
             column = 0;
@@ -45,7 +45,7 @@ pub fn main() !void {
     try writeTitle(writer, "\nGrayscale (232 to 255)");
     column = 0;
     while (colour < 256) : (colour += 1) {
-        const attr = spoon.Attribute{ .bg = .{ .@"256" = colour } };
+        const attr = spork.Attribute{ .bg = .{ .@"256" = colour } };
 
         if (column == 16) {
             column = 0;

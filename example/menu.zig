@@ -4,9 +4,9 @@ const math = std.math;
 const mem = std.mem;
 const os = std.os;
 
-const spoon = @import("spoon");
+const spork = @import("spork");
 
-var term: spoon.Term = undefined;
+var term: spork.Term = undefined;
 var loop: bool = true;
 
 var cursor: usize = 0;
@@ -32,7 +32,7 @@ pub fn main() !void {
     defer term.cook() catch {};
 
     try term.fetchSize();
-    try term.setWindowTitle("zig-spoon example: menu", .{});
+    try term.setWindowTitle("zig-spork example: menu", .{});
     try render();
 
     var buf: [16]u8 = undefined;
@@ -40,13 +40,13 @@ pub fn main() !void {
         _ = try os.poll(&fds, -1);
 
         const read = try term.readInput(&buf);
-        var it = spoon.inputParser(buf[0..read]);
+        var it = spork.inputParser(buf[0..read]);
         while (it.next()) |in| {
             // The input descriptor parser is not only useful for user-configuration.
             // Since it can work at comptime, you can use it to simplify the
             // matching of hardcoded keybinds as well. Down below we specify the
             // typical keybinds a terminal user would expect for moving up and
-            // down, without getting our hands dirty in the interals of zig-spoons
+            // down, without getting our hands dirty in the interals of zig-sporks
             // Input object.
             if (in.eqlDescription("escape") or in.eqlDescription("q")) {
                 loop = false;
@@ -85,7 +85,7 @@ fn render() !void {
     // The RestrictedPaddingWriter.pad() function will fill the remaining space
     // with whitespace padding.
     var rpw = rc.restrictedPaddingWriter(term.width);
-    try rpw.writer().writeAll(" Spoon example program: menu");
+    try rpw.writer().writeAll(" spork example program: menu");
     try rpw.pad();
 
     try rc.moveCursorTo(1, 0);
@@ -101,7 +101,7 @@ fn render() !void {
     try menuEntry(&rc, " →µ←", 6, entry_width);
 }
 
-fn menuEntry(rc: *spoon.Term.RenderContext, name: []const u8, row: usize, width: usize) !void {
+fn menuEntry(rc: *spork.Term.RenderContext, name: []const u8, row: usize, width: usize) !void {
     try rc.moveCursorTo(row, 2);
     try rc.setAttribute(.{ .fg = .blue, .reverse = (cursor == row - 3) });
     var rpw = rc.restrictedPaddingWriter(width - 1);

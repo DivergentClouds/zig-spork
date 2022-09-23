@@ -15,7 +15,7 @@ pub fn build(b: *Builder) void {
         const exe = b.addExecutable("menu", "example/menu.zig");
         exe.setTarget(target);
         exe.setBuildMode(mode);
-        exe.addPackagePath("spoon", "import.zig");
+        exe.addPackagePath("spork", "import.zig");
         exe.install();
     }
 
@@ -23,7 +23,7 @@ pub fn build(b: *Builder) void {
         const exe = b.addExecutable("input-demo", "example/input-demo.zig");
         exe.setTarget(target);
         exe.setBuildMode(mode);
-        exe.addPackagePath("spoon", "import.zig");
+        exe.addPackagePath("spork", "import.zig");
         exe.install();
     }
 
@@ -31,7 +31,7 @@ pub fn build(b: *Builder) void {
         const exe = b.addExecutable("colours", "example/colours.zig");
         exe.setTarget(target);
         exe.setBuildMode(mode);
-        exe.addPackagePath("spoon", "import.zig");
+        exe.addPackagePath("spork", "import.zig");
         exe.install();
     }
 
@@ -39,7 +39,7 @@ pub fn build(b: *Builder) void {
         const exe = b.addExecutable("table-256-colours", "example/table-256-colours.zig");
         exe.setTarget(target);
         exe.setBuildMode(mode);
-        exe.addPackagePath("spoon", "import.zig");
+        exe.addPackagePath("spork", "import.zig");
         exe.install();
     }
 }

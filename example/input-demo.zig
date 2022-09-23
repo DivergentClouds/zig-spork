@@ -4,9 +4,9 @@ const heap = std.heap;
 const os = std.os;
 const unicode = std.unicode;
 
-const spoon = @import("spoon");
+const spork = @import("spork");
 
-var term: spoon.Term = undefined;
+var term: spork.Term = undefined;
 var loop: bool = true;
 var buf: [32]u8 = undefined;
 var read: usize = undefined;
@@ -51,7 +51,7 @@ pub fn main() !void {
     defer term.cook() catch {};
 
     try term.fetchSize();
-    try term.setWindowTitle("zig-spoon example: input-demo", .{});
+    try term.setWindowTitle("zig-spork example: input-demo", .{});
     try render();
 
     while (loop) {
@@ -72,7 +72,7 @@ fn render() !void {
     try rc.moveCursorTo(0, 0);
     try rc.setAttribute(.{ .fg = .green, .reverse = true });
     var rpw = rc.restrictedPaddingWriter(term.width);
-    try rpw.writer().writeAll(" Spoon example program: input-demo");
+    try rpw.writer().writeAll(" spork example program: input-demo");
     try rpw.pad();
 
     try rc.moveCursorTo(1, 0);
@@ -146,7 +146,7 @@ fn render() !void {
         }
         try rpw.finish();
 
-        var it = spoon.inputParser(buf[0..read]);
+        var it = spork.inputParser(buf[0..read]);
         var i: usize = 1;
         while (it.next()) |in| : (i += 1) {
             rpw = rc.restrictedPaddingWriter(term.width);
