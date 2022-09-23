@@ -11,10 +11,10 @@ The text attribute code can be used independently, so zig-spork is also useful
 for non-TUI terminal programs that still want fancy text.
 
 ```
-    _
-  /   \
- |     |
-  \   /
+    
+  /|||\
+ | ||| |
+  \ - /
    | |
    | |
    | |
