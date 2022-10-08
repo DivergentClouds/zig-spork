@@ -1,0 +1,6 @@
+id: hzfxuc5nbxkpmymduut7py7sd984omf53txa89dup21dxter
+name: zig-spork
+main: import.zig
+license: MPL-2.0
+description: A fork of the zig-spoon tui library
+dependencies:
