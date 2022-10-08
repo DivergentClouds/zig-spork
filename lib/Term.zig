@@ -45,7 +45,7 @@ pub fn init(self: *Self) !void {
     self.* = .{
         .tty = try fs.cwd().openFile(
             "/dev/tty",
-            .{ .read = true, .write = true },
+            .{ .mode = .read_write },
         ),
     };
 }
