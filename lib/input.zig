@@ -157,7 +157,7 @@ const InputParser = struct {
         // This may be either a M-[a-z] code, or we accidentally received an
         // escape key press and a letter key press together. There is literally
         // no way to differentiate. However the second case is less likely.
-        if (ascii.isAlpha(self.bytes.?[1]) and ascii.isLower(self.bytes.?[1])) {
+        if (ascii.isAlphanumeric(self.bytes.?[1]) and ascii.isLower(self.bytes.?[1])) {
             defer self.advanceBufferBy("\x1Ba".len);
             return Input{ .content = .{ .codepoint = self.bytes.?[1] }, .mod_alt = true };
         }
